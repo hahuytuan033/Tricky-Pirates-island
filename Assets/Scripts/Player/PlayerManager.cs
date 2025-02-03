@@ -6,9 +6,9 @@ public class PlayerManager : MonoBehaviour
     [Header("Player Movement")]
     [SerializeField] private float speed = 3f;
     public Rigidbody2D rb;
-    float horizontalMovement;
+    private float horizontalMovement;
 
-    [Header(" Player Jump")]
+    [Header("Player Jump")]
     [SerializeField] private float jumpForce;
 
     [Header("Player Collision")]
@@ -18,6 +18,7 @@ public class PlayerManager : MonoBehaviour
 
     [Header("Player Animation")]
     private Animator anim;
+    private bool isFacingRight = true;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -32,10 +33,20 @@ public class PlayerManager : MonoBehaviour
         GroundChecked(); // check if the player is on the ground 
         rb.linearVelocity = new Vector2(horizontalMovement * speed, rb.linearVelocity.y);
 
-        //jump to the player
+        // jump for the player
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             Jump();
+        }
+
+        // Flip the player if necessary
+        if (horizontalMovement > 0 && !isFacingRight)
+        {
+            Flip();
+        }
+        else if (horizontalMovement < 0 && isFacingRight)
+        {
+            Flip();
         }
 
         Animation(); // call the animation function
@@ -61,5 +72,14 @@ public class PlayerManager : MonoBehaviour
     public void Move(InputAction.CallbackContext context)
     {
         horizontalMovement = context.ReadValue<Vector2>().x;
+    }
+
+    // Flip the player
+    public void Flip()
+    {
+        isFacingRight = !isFacingRight;
+        Vector3 scaler = transform.localScale;
+        scaler.x *= -1;
+        transform.localScale = scaler;
     }
 }
