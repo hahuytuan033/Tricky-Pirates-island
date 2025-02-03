@@ -54,6 +54,8 @@ public class PlayerManager : MonoBehaviour
     private void Animation()
     {
         anim.SetFloat("xVelocity", rb.linearVelocity.x);
+        anim.SetFloat("yVelocity", rb.linearVelocity.y);
+        anim.SetBool("isGrounded", isGrounded);
     }
 
     public void Move(InputAction.CallbackContext context)
