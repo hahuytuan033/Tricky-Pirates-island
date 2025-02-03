@@ -3,19 +3,22 @@ using UnityEngine.InputSystem;
 
 public class PlayerManager : MonoBehaviour
 {
+    [Header("Player Movement")]
     [SerializeField] private float speed = 3f;
-    private float jumpForce = 5f;
     public Rigidbody2D rb;
     float horizontalMovement;
 
-    // variable jump
-    public Transform groundCheck;
-    public LayerMask groundLayer;
-    bool isGrounded;
+    [Header(" Player Jump")]
+    [SerializeField] private float jumpForce;
 
-    // variable anim
+    [Header("Player Collision")]
+    [SerializeField] private float groundCheck;
+    [SerializeField] private LayerMask groundLayer;
+    private bool isGrounded;
+
+    [Header("Player Animation")]
     private Animator anim;
-    
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -26,16 +29,26 @@ public class PlayerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        GroundChecked(); // check if the player is on the ground 
         rb.linearVelocity = new Vector2(horizontalMovement * speed, rb.linearVelocity.y);
 
-        //Player Jump
-        isGrounded = Physics2D.OverlapCapsule(groundCheck.position, new Vector2(0.45f, 0.05f), CapsuleDirection2D.Horizontal, 0, groundLayer);
+        //jump to the player
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
-            rb.linearVelocity= new Vector2(rb.linearVelocity.x, jumpForce);
+            Jump();
         }
 
         Animation(); // call the animation function
+    }
+
+    private void Jump()
+    {
+        rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+    }
+
+    private void GroundChecked()
+    {
+        isGrounded = Physics2D.Raycast(transform.position, Vector2.down, groundCheck, groundLayer);
     }
 
     private void Animation()
