@@ -12,11 +12,15 @@ public class PlayerManager : MonoBehaviour
     public Transform groundCheck;
     public LayerMask groundLayer;
     bool isGrounded;
+
+    // variable anim
+    private Animator anim;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -30,6 +34,13 @@ public class PlayerManager : MonoBehaviour
         {
             rb.linearVelocity= new Vector2(rb.linearVelocity.x, jumpForce);
         }
+
+        Animation(); // call the animation function
+    }
+
+    private void Animation()
+    {
+        anim.SetFloat("xVelocity", rb.linearVelocity.x);
     }
 
     public void Move(InputAction.CallbackContext context)
