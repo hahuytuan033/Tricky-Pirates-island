@@ -340,7 +340,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8760507340164207397}
   - component: {fileID: 362514972201118935}
-  - component: {fileID: 3071575544533613157}
   m_Layer: 0
   m_Name: Big Clouds_0
   m_TagString: Untagged
@@ -419,20 +418,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3071575544533613157
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 326477301891173907}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c698bec6ce952549b3dbe9d00358dea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scrollSpeed: 1
-  startPosition: {x: -4.01, y: 0}
 --- !u!1 &1840188018112944101
 GameObject:
   m_ObjectHideFlags: 0
