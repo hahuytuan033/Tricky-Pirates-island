@@ -49,6 +49,7 @@ public class PlayerManager : MonoBehaviour
             Flip();
         }
 
+// thay đổi ở đây
         Animation(); // call the animation function
     }
 
