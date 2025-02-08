@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 public class PlayerManager : MonoBehaviour
 {
     [Header("Player Movement")]
+    [SerializeField] private bool _active = true;
     [SerializeField] private float speed = 3f;
     public Rigidbody2D rb;
     private float horizontalMovement;
@@ -20,16 +21,26 @@ public class PlayerManager : MonoBehaviour
     private Animator anim;
     private bool isFacingRight = true;
 
+    [Header("Player Death")]
+    private Collider2D _collider;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        _collider = GetComponent<Collider2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        // die
+        if (!_active)
+        {
+            return;
+        }
+
         GroundChecked(); // check if the player is on the ground 
         rb.linearVelocity = new Vector2(horizontalMovement * speed, rb.linearVelocity.y);
 
@@ -49,7 +60,7 @@ public class PlayerManager : MonoBehaviour
             Flip();
         }
 
-// thay đổi ở đây
+        // thay đổi ở đây
         Animation(); // call the animation function
     }
 
@@ -70,6 +81,7 @@ public class PlayerManager : MonoBehaviour
         anim.SetBool("isGrounded", isGrounded);
     }
 
+    // Move the player
     public void Move(InputAction.CallbackContext context)
     {
         horizontalMovement = context.ReadValue<Vector2>().x;
@@ -82,5 +94,19 @@ public class PlayerManager : MonoBehaviour
         Vector3 scaler = transform.localScale;
         scaler.x *= -1;
         transform.localScale = scaler;
+    }
+
+    // Player Death
+
+    private void MiniJump()
+    {
+        rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce / 2);
+    }
+
+    public void Die()
+    {
+        _active = false;
+        _collider.enabled = false;
+        MiniJump();
     }
 }
