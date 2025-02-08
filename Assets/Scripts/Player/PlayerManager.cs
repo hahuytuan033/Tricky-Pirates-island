@@ -1,5 +1,7 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -24,12 +26,16 @@ public class PlayerManager : MonoBehaviour
     [Header("Player Death")]
     private Collider2D _collider;
 
+    [Header("Player Respawn")]
+    private Vector2 respawnPoint;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         _collider = GetComponent<Collider2D>();
+        SetRespawnPoint(transform.position);
     }
 
     // Update is called once per frame
@@ -64,16 +70,19 @@ public class PlayerManager : MonoBehaviour
         Animation(); // call the animation function
     }
 
+    // Jump function
     private void Jump()
     {
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
     }
 
+    // Check if the player is on the ground
     private void GroundChecked()
     {
         isGrounded = Physics2D.Raycast(transform.position, Vector2.down, groundCheck, groundLayer);
     }
 
+    // Animation function
     private void Animation()
     {
         anim.SetFloat("xVelocity", rb.linearVelocity.x);
@@ -97,10 +106,14 @@ public class PlayerManager : MonoBehaviour
     }
 
     // Player Death
-
     private void MiniJump()
     {
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce / 2);
+    }
+
+    public void SetRespawnPoint(Vector2 position)
+    {
+        respawnPoint = position;
     }
 
     public void Die()
@@ -108,5 +121,19 @@ public class PlayerManager : MonoBehaviour
         _active = false;
         _collider.enabled = false;
         MiniJump();
+        StartCoroutine(Respawn());
+    }
+
+    // Player Respawn when the player dies
+    private IEnumerator Respawn()
+    {
+        yield return new WaitForSeconds(1.2f);
+        RestartScene(); // Call the function to restart the scene
+    }
+
+    // Function to restart the scene
+    private void RestartScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
