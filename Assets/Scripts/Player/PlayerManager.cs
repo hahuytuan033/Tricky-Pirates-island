@@ -124,6 +124,14 @@ public class PlayerManager : MonoBehaviour
         StartCoroutine(Respawn());
     }
 
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Obstacle"))
+        {
+            Die();
+        }
+    }
+
     // Player Respawn when the player dies
     private IEnumerator Respawn()
     {
