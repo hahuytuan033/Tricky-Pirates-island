@@ -26,14 +26,16 @@ public class GrabKey : MonoBehaviour
             {
                 // Grab key
                 grabKey = hitInfo.collider.gameObject;
-                grabKey.GetComponent<Rigidbody2D>().isKinematic = true;
+                grabKey.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+                grabKey.GetComponent<Animator>().enabled = false;
                 grabKey.transform.position = grabPoint.position;
                 grabKey.transform.SetParent(transform);
             }
             else if (grabKey != null)
             {
                 // Release key
-                grabKey.GetComponent<Rigidbody2D>().isKinematic = false;
+                grabKey.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+                grabKey.GetComponent<Animator>().enabled = true;
                 grabKey.transform.SetParent(null);
                 grabKey = null;
             }
