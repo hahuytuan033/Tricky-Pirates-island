@@ -28,6 +28,7 @@ public class GrabKey : MonoBehaviour
                 // Grab key
                 grabKey = hitInfo.collider.gameObject;
                 grabKey.GetComponent<Rigidbody2D>().isKinematic = true;
+                grabKey.transform.rotation = Quaternion.Euler(180, 0, 90);
                 grabKey.transform.position = grabPoint.position;
                 grabKey.transform.SetParent(transform);
             }
@@ -35,6 +36,7 @@ public class GrabKey : MonoBehaviour
             {
                 // Release key
                 grabKey.GetComponent<Rigidbody2D>().isKinematic = false;
+                grabKey.transform.rotation = Quaternion.Euler(0, 0, 0);
                 grabKey.transform.SetParent(null);
                 grabKey = null;
             }
