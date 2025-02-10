@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LevelTransition : MonoBehaviour
+public class LevelTransition1 : MonoBehaviour
 {
     private int keyLayer;
     private int chestLayer;
