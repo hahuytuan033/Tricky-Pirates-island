@@ -9,13 +9,11 @@ public class GrabKey : MonoBehaviour
     private GameObject grabKey;
     private int layerIndex;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         layerIndex = LayerMask.NameToLayer("Key");
     }
 
-    // Update is called once per frame
     void Update()
     {
         RaycastHit2D hitInfo = Physics2D.Raycast(rayPoint.position, rayPoint.right, rayDistance);
@@ -27,7 +25,8 @@ public class GrabKey : MonoBehaviour
                 // Grab key
                 grabKey = hitInfo.collider.gameObject;
                 grabKey.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
-                grabKey.GetComponent<Animator>().enabled = false;
+                grabKey.GetComponent<Collider2D>().isTrigger = true;
+                grabKey.transform.rotation = Quaternion.Euler(180, 0, 90);
                 grabKey.transform.position = grabPoint.position;
                 grabKey.transform.SetParent(transform);
             }
@@ -35,8 +34,9 @@ public class GrabKey : MonoBehaviour
             {
                 // Release key
                 grabKey.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-                grabKey.GetComponent<Animator>().enabled = true;
+                grabKey.GetComponent<Collider2D>().isTrigger = false; 
                 grabKey.transform.SetParent(null);
+                grabKey.transform.rotation = Quaternion.Euler(0, 0, 0);
                 grabKey = null;
             }
         }
