@@ -1,6 +1,9 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class Level_1 : MonoBehaviour
+public class LevelTransition : MonoBehaviour
 {
     private int keyLayer;
     private int chestLayer;
@@ -30,6 +33,18 @@ public class Level_1 : MonoBehaviour
             {
                 chestAnimator.enabled = true;
             }
+
+            // Bắt đầu coroutine để chuyển sang scene tiếp theo
+            StartCoroutine(LoadNextSceneAfterDelay(1f));
         }
+    }
+
+    private IEnumerator LoadNextSceneAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        // Thay đổi chỉ số scene tiếp theo theo nhu cầu của bạn
+        int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+        SceneManager.LoadScene(nextSceneIndex);
     }
 }
