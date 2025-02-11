@@ -82,7 +82,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -91,12 +91,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -145,12 +145,12 @@ TextureImporter:
     buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: -1
+    textureFormat: 47
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
-    overridden: 0
+    overridden: 1
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
@@ -526,7 +526,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -535,7 +535,23 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Green Board (guide)_0: -1677448655860656199
+      Green Board (guide)_1: -6955653887872906360
+      Green Board (guide)_10: 8393736738490956070
+      Green Board (guide)_11: -6528480777092261053
+      Green Board (guide)_12: 1620871426808182044
+      Green Board (guide)_13: 899375053053832944
+      Green Board (guide)_14: -2414478445558926739
+      Green Board (guide)_15: 6997716752813066006
+      Green Board (guide)_2: 5558075833233756514
+      Green Board (guide)_3: -1455415007855507440
+      Green Board (guide)_4: -8075485993524356676
+      Green Board (guide)_5: -2791075444317958483
+      Green Board (guide)_6: 4151585041764515045
+      Green Board (guide)_7: -2967753651299010997
+      Green Board (guide)_8: 2345769450658252536
+      Green Board (guide)_9: 7959473387212987475
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
