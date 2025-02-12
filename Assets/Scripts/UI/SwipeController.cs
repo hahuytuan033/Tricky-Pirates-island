@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SwipeController : MonoBehaviour
 {
@@ -9,11 +10,13 @@ public class SwipeController : MonoBehaviour
     [SerializeField] RectTransform levelPagesRect;
     [SerializeField] float tweenTime;
     [SerializeField] LeanTweenType tweenType;
+    [SerializeField] Button previousBtn, nextBtn;
 
     private void Awake()
     {
         currentPage = 1;
         targetPos = levelPagesRect.localPosition;
+        UpdateArrowbutton();
     }
 
     public void Next()
@@ -39,5 +42,20 @@ public class SwipeController : MonoBehaviour
     void MovePage()
     {
         levelPagesRect.LeanMoveLocal(targetPos, tweenTime).setEase(tweenType);
+        UpdateArrowbutton();
+    }
+
+    void UpdateArrowbutton()
+    {
+        nextBtn.interactable = true;
+        previousBtn.interactable = true;
+        if (currentPage == 1)
+        {
+            previousBtn.interactable = false;
+        }
+        else if (currentPage == maxPage)
+        {
+            nextBtn.interactable = false;
+        }
     }
 }
