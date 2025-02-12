@@ -8,6 +8,7 @@ public class GrabKey : MonoBehaviour
     [SerializeField] private float rayDistance;
     private GameObject grabKey;
     private int layerIndex;
+    private Animator keyAnimator;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -32,6 +33,11 @@ public class GrabKey : MonoBehaviour
                 grabKey.transform.rotation = Quaternion.Euler(180, 0, 90);
                 grabKey.transform.position = grabPoint.position;
                 grabKey.transform.SetParent(transform);
+
+                // Get the animator component
+                keyAnimator = grabKey.GetComponent<Animator>();
+                keyAnimator.SetBool("isGrabbing", true);
+
             }
             else if (grabKey != null)
             {
@@ -39,6 +45,9 @@ public class GrabKey : MonoBehaviour
                 grabKey.GetComponent<Rigidbody2D>().isKinematic = false;
                 grabKey.transform.rotation = Quaternion.Euler(0, 0, 0);
                 grabKey.transform.SetParent(null);
+
+                //Set animation to idle
+                keyAnimator.SetBool("isGrabbing", false);
                 grabKey = null;
             }
         }
