@@ -26,13 +26,12 @@ public class PowerUp : MonoBehaviour
         _collider2D.enabled = true;
     }
 
-    private void OnClisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         var player = collision.gameObject.GetComponent<PlayerManager>();
         if (player != null)
         {
             Destroy(gameObject);
-
         }
     }
 }

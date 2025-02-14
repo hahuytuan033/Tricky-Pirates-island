@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 3
   tags:
   - Obstacle
+  - Bottle
+  - Big Ground
+  - Check
   layers:
   - Default
   - TransparentFX

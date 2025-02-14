@@ -34,7 +34,7 @@ public class PlayerManager : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        
+
         _collider = GetComponent<Collider2D>();
         SetRespawnPoint(transform.position);
     }
@@ -55,7 +55,7 @@ public class PlayerManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             Jump();
-            
+
         }
 
 
@@ -135,6 +135,24 @@ public class PlayerManager : MonoBehaviour
         {
             Die();
         }
+
+        if (other.gameObject.CompareTag("Bottle"))
+        {
+            transform.localScale = new Vector3(2.5f, 2.5f, 2.5f);
+            groundCheck = 3f;
+        }
+
+        if (transform.localScale == new Vector3(2.5f, 2.5f, 2.5f) && other.gameObject.CompareTag("Big Ground"))
+        {
+            Rigidbody2D bigGroundRb = other.gameObject.GetComponent<Rigidbody2D>();
+            if (bigGroundRb != null)
+            {
+                bigGroundRb.bodyType = RigidbodyType2D.Dynamic;
+                bigGroundRb.mass = 3f;
+                bigGroundRb.gravityScale = 3f;
+            }
+        }
+
     }
 
     // Player Respawn when the player dies
