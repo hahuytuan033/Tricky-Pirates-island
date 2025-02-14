@@ -34,6 +34,7 @@ public class PlayerManager : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        
         _collider = GetComponent<Collider2D>();
         SetRespawnPoint(transform.position);
     }
@@ -50,11 +51,13 @@ public class PlayerManager : MonoBehaviour
         GroundChecked(); // check if the player is on the ground 
         rb.linearVelocity = new Vector2(horizontalMovement * speed, rb.linearVelocity.y);
 
-        // jump for the player
+        // 
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             Jump();
+            
         }
+
 
         // Flip the player if necessary
         if (horizontalMovement > 0 && !isFacingRight)
@@ -85,9 +88,11 @@ public class PlayerManager : MonoBehaviour
     // Animation function
     private void Animation()
     {
+        // Player animation
         anim.SetFloat("xVelocity", rb.linearVelocity.x);
         anim.SetFloat("yVelocity", rb.linearVelocity.y);
         anim.SetBool("isGrounded", isGrounded);
+
     }
 
     // Move the player
