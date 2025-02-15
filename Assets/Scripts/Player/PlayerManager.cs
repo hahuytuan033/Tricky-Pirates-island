@@ -15,7 +15,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private float jumpForce;
 
     [Header("Player Collision")]
-    [SerializeField] private float groundCheck;
+    [SerializeField] public float groundCheck;
     [SerializeField] private LayerMask groundLayer;
     private bool isGrounded;
 

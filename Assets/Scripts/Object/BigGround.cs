@@ -11,6 +11,7 @@ public class BigGround : MonoBehaviour
             if (Player != null)
             {
                 Player.transform.localScale = new Vector3(1, 1, 1);
+                Player.GetComponent<PlayerManager>().groundCheck = 1f;
             }
         }
     }
