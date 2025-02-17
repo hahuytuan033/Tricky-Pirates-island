@@ -7,7 +7,7 @@ public class MovingGround : MonoBehaviour
     public Transform endPoint;
     [SerializeField] private float speed;
     
-    private int direction = 1;
+    //private int direction = 1;
     private Vector2 currentTarget;
 
     private void Start()
