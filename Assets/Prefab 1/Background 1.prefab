@@ -942,6 +942,55 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &5147417744020290141
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7528977165606663884}
+  - component: {fileID: 1902317943568366024}
+  m_Layer: 0
+  m_Name: CloudPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7528977165606663884
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5147417744020290141}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.13494848, y: 0.004891328, z: -0.086867034}
+  m_LocalScale: {x: 0.66337013, y: 0.66337013, z: 0.66337013}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 303598410243367533}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1902317943568366024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5147417744020290141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a0136275f54d804a868e988cb4df130, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cloudPrefabs:
+  - {fileID: 744771001978391767, guid: 8edffb7f0e2b0af4a8550164fd505c8d, type: 3}
+  - {fileID: 788742481782762561, guid: b6d55a341cf360c499cdadce92ce0ee2, type: 3}
+  - {fileID: 8768138443208906209, guid: 7b10080df1e6ed649809e9befd4d1724, type: 3}
+  poolSize: 10
 --- !u!1 &6462363584005545883
 GameObject:
   m_ObjectHideFlags: 0
@@ -980,6 +1029,7 @@ Transform:
   - {fileID: 7467637850283885295}
   - {fileID: 2432200500209479931}
   - {fileID: 3145421720876144521}
+  - {fileID: 7528977165606663884}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7675896203530368737
@@ -1475,7 +1525,7 @@ GameObject:
   - component: {fileID: 3145421720876144521}
   - component: {fileID: 6967479267961883421}
   m_Layer: 0
-  m_Name: CloudCreate
+  m_Name: Cloud Generator
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -1509,9 +1559,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 067006231da39c143ac48ce065b912b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clouds:
-  - {fileID: 744771001978391767, guid: 8edffb7f0e2b0af4a8550164fd505c8d, type: 3}
-  - {fileID: 788742481782762561, guid: b6d55a341cf360c499cdadce92ce0ee2, type: 3}
-  - {fileID: 8768138443208906209, guid: 7b10080df1e6ed649809e9befd4d1724, type: 3}
+  cloudPool: {fileID: 1902317943568366024}
   spawnInterval: 2
   endPoint: {fileID: 521412562953027591}

@@ -4,10 +4,16 @@ public class Cloud : MonoBehaviour
 {
     private float _speed;
     private float _endPosX;
+    private CloudPool cloudPool;
 
-    public void StartFloating( float speed, float endPosX)
+    private void Awake()
     {
-        _speed = speed; 
+        cloudPool = FindObjectOfType<CloudPool>();
+    }
+
+    public void StartFloating(float speed, float endPosX)
+    {
+        _speed = speed;
         _endPosX = endPosX;
     }
 
@@ -16,7 +22,7 @@ public class Cloud : MonoBehaviour
         transform.Translate(Vector3.right * (Time.deltaTime * _speed));
         if (transform.position.x > _endPosX)
         {
-            Destroy(gameObject);
+            cloudPool.ReturnCloud(gameObject);
         }
     }
 }

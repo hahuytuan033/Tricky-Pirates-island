@@ -1,14 +1,12 @@
-using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
 public class CloudGenerator : MonoBehaviour
 {
-    [SerializeField] GameObject[] clouds;
-    [SerializeField] float spawnInterval;   // Time interval between each cloud spawn
-    [SerializeField] GameObject endPoint;
-    Vector3 startPos;
+    [SerializeField] private CloudPool cloudPool;
+    [SerializeField] private float spawnInterval;
+    [SerializeField] private GameObject endPoint;
+    private Vector3 startPos;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         startPos = transform.position;
@@ -19,23 +17,21 @@ public class CloudGenerator : MonoBehaviour
     void SpawnCloud(Vector3 startPos)
     {
         int randomIndex = Random.Range(0, 3);
-        GameObject cloud = Instantiate(clouds[randomIndex]);
+        GameObject cloud = cloudPool.GetCloud(randomIndex);
 
-        float startY = UnityEngine.Random.Range(startPos.y - 1f, startPos.y + 1f);
-
+        float startY = Random.Range(startPos.y - 1f, startPos.y + 1f);
         cloud.transform.position = new Vector3(startPos.x, startY, startPos.z);
 
-        float scale = UnityEngine.Random.Range(0.8f, 1.2f);
+        float scale = Random.Range(0.8f, 1.2f);
         cloud.transform.localScale = new Vector2(scale, scale);
 
-        float speed = UnityEngine.Random.Range(0.5f, 1.5f);
+        float speed = Random.Range(0.5f, 1.5f);
         cloud.GetComponent<Cloud>().StartFloating(speed, endPoint.transform.position.x);
     }
 
     void AttemptSpawn()
     {
         SpawnCloud(startPos);
-
         Invoke("AttemptSpawn", spawnInterval);
     }
 
@@ -47,5 +43,4 @@ public class CloudGenerator : MonoBehaviour
             SpawnCloud(spawnPos);
         }
     }
-
 }
