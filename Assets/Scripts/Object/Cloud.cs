@@ -8,7 +8,7 @@ public class Cloud : MonoBehaviour
 
     private void Awake()
     {
-        cloudPool = FindObjectOfType<CloudPool>();
+        cloudPool = FindFirstObjectByType<CloudPool>();
     }
 
     public void StartFloating(float speed, float endPosX)
