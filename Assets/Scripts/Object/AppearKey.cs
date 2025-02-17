@@ -5,7 +5,7 @@ public class AppearKey : MonoBehaviour
 {
     [SerializeField] private GameObject keyPrefab; // Reference to the key prefab
     [SerializeField] private Transform spawnPoint; // Optional: Point where key will spawn
-    [SerializeField] private float spawnDelay = 2f; // Delay time in seconds
+    [SerializeField] private float spawnDelay = 1f; // Delay time in seconds
     private bool hasSpawned = false;
 
     private void OnTriggerEnter2D(Collider2D other)
