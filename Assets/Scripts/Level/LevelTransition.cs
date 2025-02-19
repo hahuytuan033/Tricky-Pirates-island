@@ -34,7 +34,7 @@ public class LevelTransition : MonoBehaviour
             {
                 chestAnimator.enabled = true;
             }
-
+            UnlockNewLevel();
             // Bắt đầu coroutine để chuyển sang scene tiếp theo
             StartCoroutine(LoadNextLevel(1f));
         }
@@ -49,5 +49,15 @@ public class LevelTransition : MonoBehaviour
         // Thay đổi chỉ số scene tiếp theo
         int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
         SceneManager.LoadScene(nextSceneIndex);
+    }
+
+    void UnlockNewLevel()
+    {
+        if(SceneManager.GetActiveScene().buildIndex>= PlayerPrefs.GetInt("ReachedIndex"))
+        {
+            PlayerPrefs.SetInt("ReachedIndex", SceneManager.GetActiveScene().buildIndex + 1);
+            PlayerPrefs.SetInt("UnlockedLevel", PlayerPrefs.GetInt("UnlockedLevel", 1) + 1);
+            PlayerPrefs.Save();
+        }
     }
 }

@@ -14284,6 +14284,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2269343699157894685, guid: c577ec1f6d69f7846a7bcd8794b23424, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3055811369518751494, guid: c577ec1f6d69f7846a7bcd8794b23424, type: 3}
       propertyPath: m_Name
       value: Front tree

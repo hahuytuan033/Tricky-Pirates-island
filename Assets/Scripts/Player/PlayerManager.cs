@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour
 {
+
     [Header("Player Movement")]
     [SerializeField] private bool _active = true;
     [SerializeField] private float speed = 3f;
@@ -29,6 +30,7 @@ public class PlayerManager : MonoBehaviour
     [Header("Player Respawn")]
     private Vector2 respawnPoint;
 
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -51,14 +53,6 @@ public class PlayerManager : MonoBehaviour
         GroundChecked(); // check if the player is on the ground 
         rb.linearVelocity = new Vector2(horizontalMovement * speed, rb.linearVelocity.y);
 
-        // 
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
-        {
-            Jump();
-
-        }
-
-
         // Flip the player if necessary
         if (horizontalMovement > 0 && !isFacingRight)
         {
@@ -74,9 +68,16 @@ public class PlayerManager : MonoBehaviour
     }
 
     // Jump function
-    private void Jump()
+    public void Jump(InputAction.CallbackContext context)
     {
-        rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+        if (context.performed && isGrounded)
+        {
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+        }
+        else if (context.canceled && rb.linearVelocity.y > 0)
+        {
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.5f);
+        }
     }
 
     // Check if the player is on the ground

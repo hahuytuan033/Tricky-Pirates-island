@@ -333,7 +333,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Don't trust yourself
+  m_text: Don't trust what you see
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0832eb26fb4de4043b8fe3c989709691, type: 2}
   m_sharedMaterial: {fileID: -6148920841380299819, guid: 0832eb26fb4de4043b8fe3c989709691, type: 2}
@@ -660,7 +660,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3339763781194381987, guid: 03f13626c856a984fbd2f81aa1607691, type: 3}
       propertyPath: m_text
-      value: "Take Captain Su\u1EA9n to the other side"
+      value: "Drag Captain Su\u1EA9n"
       objectReference: {fileID: 0}
     - target: {fileID: 3339763781194381987, guid: 03f13626c856a984fbd2f81aa1607691, type: 3}
       propertyPath: m_fontAsset
@@ -895,6 +895,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CloudPool
       objectReference: {fileID: 0}
+    - target: {fileID: 5750088884170546456, guid: e8cf3d95d16265c40af24aa9b259414b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 37.9
+      objectReference: {fileID: 0}
     - target: {fileID: 6462363584005545883, guid: e8cf3d95d16265c40af24aa9b259414b, type: 3}
       propertyPath: m_Name
       value: Background 1
@@ -981,6 +985,10 @@ PrefabInstance:
       value: 6.5585585
       objectReference: {fileID: 0}
     - target: {fileID: 4125485063763740167, guid: ec71ccc8ed3e1d84aa154cba983698b4, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4125485063763740167, guid: ec71ccc8ed3e1d84aa154cba983698b4, type: 3}
       propertyPath: m_Offset.x
       value: 0.011881709
       objectReference: {fileID: 0}
@@ -998,7 +1006,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8964368373601033597, guid: ec71ccc8ed3e1d84aa154cba983698b4, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8964368373601033597, guid: ec71ccc8ed3e1d84aa154cba983698b4, type: 3}
       propertyPath: m_TagString
