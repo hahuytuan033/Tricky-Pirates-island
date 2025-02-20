@@ -8,6 +8,7 @@ TagManager:
   - Bottle
   - Big Ground
   - Check
+  - Audio
   layers:
   - Default
   - TransparentFX

@@ -1,5 +1,6 @@
- using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,6 +10,13 @@ public class LevelTransition : MonoBehaviour
     private int chestLayer;
     private Animator chestAnimator;
     public Animator SceneTransition;
+
+    AudioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
 
     void Start()
     {
@@ -28,6 +36,7 @@ public class LevelTransition : MonoBehaviour
         if (gameObject.layer == chestLayer && collision.gameObject.layer == keyLayer)
         {
             Debug.Log("You Win");
+            audioManager.PlaySFX(audioManager.winSound);
 
             // Bật Animator của chest
             if (chestAnimator != null)
@@ -53,7 +62,7 @@ public class LevelTransition : MonoBehaviour
 
     void UnlockNewLevel()
     {
-        if(SceneManager.GetActiveScene().buildIndex>= PlayerPrefs.GetInt("ReachedIndex"))
+        if (SceneManager.GetActiveScene().buildIndex >= PlayerPrefs.GetInt("ReachedIndex"))
         {
             PlayerPrefs.SetInt("ReachedIndex", SceneManager.GetActiveScene().buildIndex + 1);
             PlayerPrefs.SetInt("UnlockedLevel", PlayerPrefs.GetInt("UnlockedLevel", 1) + 1);
