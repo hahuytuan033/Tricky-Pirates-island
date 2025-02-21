@@ -148,6 +148,7 @@ public class PlayerManager : MonoBehaviour
 
         if (other.gameObject.CompareTag("Bottle"))
         {
+            audioManager.PlaySFX(audioManager.powerUpSound);
             transform.localScale = new Vector3(2.5f, 2.5f, 2.5f);
             groundCheck = 3f;
         }

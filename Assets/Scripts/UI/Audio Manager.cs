@@ -12,6 +12,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip grabKeySound;
     public AudioClip gameOverSound;
     public AudioClip jumpUpSound;
+    public AudioClip powerUpSound;
 
 
     private bool wasMusicPlaying;

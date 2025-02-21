@@ -307,11 +307,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicSource: {fileID: 3286366531210167474}
   sfxSource: {fileID: 8384186734050661636}
-  backgroundMusic: {fileID: 8300000, guid: 83f0452a6629178488b39c11c92c34c9, type: 3}
+  backgroundMusic: {fileID: 8300000, guid: 4a634d668317a5e439aee3e3b651d12f, type: 3}
   winSound: {fileID: 8300000, guid: 0f686933d0904f2448428e053c658de8, type: 3}
   grabKeySound: {fileID: 8300000, guid: a6161f7485e73c041b3d2d204f934410, type: 3}
   gameOverSound: {fileID: 8300000, guid: 510b569431db81243bc4d1187fc89752, type: 3}
   jumpUpSound: {fileID: 8300000, guid: 0aa1c12f80fc7854f9187f02a63fd195, type: 3}
+  powerUpSound: {fileID: 8300000, guid: 5861997463593c7438391c0f80acbd8d, type: 3}
 --- !u!114 &1532997852559854345
 MonoBehaviour:
   m_ObjectHideFlags: 0
