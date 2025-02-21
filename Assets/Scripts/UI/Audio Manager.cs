@@ -10,6 +10,11 @@ public class AudioManager : MonoBehaviour
     public AudioClip backgroundMusic;
     public AudioClip winSound;
     public AudioClip grabKeySound;
+    public AudioClip gameOverSound;
+
+
+    private bool wasMusicPlaying;
+    private bool wasSFXPlaying;
 
     // public GameObject ObjectMusic;
 
@@ -32,5 +37,35 @@ public class AudioManager : MonoBehaviour
     public void PlaySFX(AudioClip clip)
     {
         sfxSource.PlayOneShot(clip);
+    }
+
+    public void PlayGameOverSound()
+    {
+        wasMusicPlaying = musicSource.isPlaying;
+        wasSFXPlaying = sfxSource.isPlaying;
+        // stop all sound
+        musicSource.Stop();
+        sfxSource.Stop();
+
+        // play game over sound
+        sfxSource.clip = gameOverSound;
+        sfxSource.Play();
+
+        StartCoroutine(RestoreAudioState(gameOverSound.length));
+    }
+
+    private System.Collections.IEnumerator RestoreAudioState(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        if (wasMusicPlaying)
+        {
+            musicSource.Play();
+        }
+
+        if (wasSFXPlaying)
+        {
+            sfxSource.Play();
+        }
     }
 }

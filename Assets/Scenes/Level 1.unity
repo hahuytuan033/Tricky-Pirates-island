@@ -2375,6 +2375,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e48f29ea11aa63d49a08fbdce2478ae3, type: 3}
+--- !u!1 &1837148098 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8951715663112538741, guid: 838fa359f58983349b789e9bcd9dc709, type: 3}
+  m_PrefabInstance: {fileID: 218262899024410773}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1862910436
 GameObject:
   m_ObjectHideFlags: 0
@@ -2800,6 +2805,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1141902518340466150, guid: 838fa359f58983349b789e9bcd9dc709, type: 3}
+      propertyPath: ObjectMusic
+      value: 
+      objectReference: {fileID: 1837148098}
+    - target: {fileID: 1141902518340466150, guid: 838fa359f58983349b789e9bcd9dc709, type: 3}
+      propertyPath: grabKeySound
+      value: 
+      objectReference: {fileID: 8300000, guid: a6161f7485e73c041b3d2d204f934410, type: 3}
+    - target: {fileID: 1141902518340466150, guid: 838fa359f58983349b789e9bcd9dc709, type: 3}
+      propertyPath: gameOverSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 510b569431db81243bc4d1187fc89752, type: 3}
+    - target: {fileID: 1141902518340466150, guid: 838fa359f58983349b789e9bcd9dc709, type: 3}
+      propertyPath: backgroundMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: 02e854939c7be6e40a5b02b004f9150c, type: 3}
     - target: {fileID: 2217753099584840300, guid: 838fa359f58983349b789e9bcd9dc709, type: 3}
       propertyPath: m_LocalPosition.x
       value: 36.82
