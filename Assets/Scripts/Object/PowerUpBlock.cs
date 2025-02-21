@@ -6,6 +6,12 @@ public class PowerUpBlock : MonoBehaviour
 {
     [SerializeField] private Sprite _inactiveSprite;
     [SerializeField] private GameObject _powerUp;
+    AudioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
 
     private bool _used;
 
@@ -16,7 +22,8 @@ public class PowerUpBlock : MonoBehaviour
         {
             GetComponent<SpriteRenderer>().sprite = _inactiveSprite;
             Instantiate(_powerUp, transform.position, Quaternion.identity);
-            _used = true; // Đặt _used thành true để ngăn chặn việc tạo thêm _powerUp
+            audioManager.PlaySFX(audioManager.jumpUpSound); // Play the power-up sound
+            _used = true; // Set _used to true to prevent creating more _powerUp
         }
     }
 }
