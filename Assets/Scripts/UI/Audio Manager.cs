@@ -9,6 +9,7 @@ public class AudioManager : MonoBehaviour
     [Header("Audio Clip")]
     public AudioClip backgroundMusic;
     public AudioClip winSound;
+    public AudioClip grabKeySound;
 
     // public GameObject ObjectMusic;
 
