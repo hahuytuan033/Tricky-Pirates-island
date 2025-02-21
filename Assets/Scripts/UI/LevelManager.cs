@@ -20,9 +20,25 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+    public void ResetLevel()
+    {
+        PlayerPrefs.SetInt("UnlockedLevel", 1);
+        for (int i= 0; i< levelButtons.Length; i++)
+        {
+            levelButtons[i].interactable = false;
+        }
+        levelButtons[0].interactable = true;
+        PlayerPrefs.Save();
+    }
+
     public void OpenLevel(int levelId)
     {
         string levelName ="Level " + levelId;
         SceneManager.LoadScene(levelName);
+    }
+
+    public void NewPlayButton()
+    {
+        ResetLevel();
     }
 }
