@@ -10,10 +10,15 @@ public class AudioManager : MonoBehaviour
     public AudioClip backgroundMusic;
     public AudioClip winSound;
 
+    // public GameObject ObjectMusic;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        // ObjectMusic = GameObject.FindWithTag("Audio");
+        // musicSource = ObjectMusic.GetComponent<AudioSource>();
         musicSource.clip = backgroundMusic;
+        musicSource.loop = true;
         musicSource.Play();
     }
 
