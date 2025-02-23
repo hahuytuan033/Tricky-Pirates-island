@@ -10124,7 +10124,7 @@ Transform:
   m_GameObject: {fileID: 662114097}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.3446946, y: -2.495, z: 0}
+  m_LocalPosition: {x: 7.3446946, y: -2.512, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10199,6 +10199,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1809022502601023964, guid: 855cb8b83603f354691d1452b0bea06c, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9182150404842502521, guid: 855cb8b83603f354691d1452b0bea06c, type: 3}
       propertyPath: m_Name
       value: UI Game
