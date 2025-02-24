@@ -1,41 +1,67 @@
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
 
-public class Level_6 : MonoBehaviour
+public class ObjectMover : MonoBehaviour
 {
-    public GameObject Ground;
-    [SerializeField] private Transform pointStart;
-    [SerializeField] private Transform pointEnd;
+    [Header("Position of Ground in Game")]
+    public Transform startPoint;
+    public Transform endPoint;
+    public Transform startHoriPoint;
+    public Transform endHoriPoint;
+    [Header("Objects in Game")]
+    public GameObject movingObject;
+    public GameObject keyPrefab;
+    public GameObject ground;
+    public GameObject groundHori;
 
-    private void Start()
+    [Header("Move Settings")]
+    public float moveSpeed = 1.0f;
+    private Vector3 startPosition;
+    private Vector3 endPosition;
+    [SerializeField] private float timeToWait;
+
+    void Start()
     {
-        StartCoroutine(MoveGround());
+        //cái wall dựng lên
+        startPosition = startPoint.position;
+        endPosition = endPoint.position;
+        movingObject.transform.position = startPosition; // Đặt object vào vị trí startPoint
+
+        // cái ground bay ngang ra
+        groundHori.transform.position = startHoriPoint.position;
+        StartCoroutine(MoveObject());
     }
 
-    private IEnumerator MoveGround()
+    IEnumerator MoveObject()
     {
-        // Delay 7 giây trước khi bắt đầu di chuyển
-        yield return new WaitForSeconds(7f);
+        yield return new WaitForSeconds(timeToWait);
 
-        while (true)
+        // Di chuyển object từ startPoint đến endPoint
+        while (Vector3.Distance(movingObject.transform.position, endPosition) > 0.01f)
         {
-            yield return MoveToPosition(pointStart.position, pointEnd.position, 1f);
-            yield return new WaitForSeconds(4f);
-            yield return MoveToPosition(pointEnd.position, pointStart.position, 1f);
-        }
-    }
-
-    private IEnumerator MoveToPosition(Vector3 startPosition, Vector3 endPosition, float duration)
-    {
-        float elapsedTime = 0f;
-
-        while (elapsedTime < duration)
-        {
-            Ground.transform.position = Vector3.Lerp(startPosition, endPosition, elapsedTime / duration);
-            elapsedTime += Time.deltaTime;
+            movingObject.transform.position = Vector3.MoveTowards(movingObject.transform.position, endPosition, moveSpeed * Time.deltaTime);
             yield return null;
         }
 
-        Ground.transform.position = endPosition;
+        // Giữ object tại endPoint trong 2 giây
+        yield return new WaitForSeconds(2.0f);
+
+        // Di chuyển object từ endPoint trở về startPoint
+        while (Vector3.Distance(movingObject.transform.position, startPosition) > 0.01f)
+        {
+            movingObject.transform.position = Vector3.MoveTowards(movingObject.transform.position, startPosition, moveSpeed * Time.deltaTime);
+            yield return null;
+        }
+
+        // Xuất hiện keyPrefab khi movingObject trở lại startPoint
+        Instantiate(keyPrefab, new Vector3(-2.95f, -2.23f, 0f), Quaternion.identity);
+        ground.SetActive(true);
+
+        // cái này lúc cái GroundHori chạy
+        while (Vector3.Distance(groundHori.transform.position, endHoriPoint.position) > 0.01f)
+        {
+            groundHori.transform.position = Vector3.MoveTowards(groundHori.transform.position, endHoriPoint.position, moveSpeed * Time.deltaTime);
+            yield return null;
+        }
     }
 }
