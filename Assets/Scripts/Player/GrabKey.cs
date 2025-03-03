@@ -9,11 +9,11 @@ public class GrabKey : MonoBehaviour
     private GameObject grabKey;
     private int layerIndex;
     private Animator keyAnimator;
-    AudioManager audioManager;
+    
 
     private void Awake()
     {
-        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -35,7 +35,7 @@ public class GrabKey : MonoBehaviour
             grabKey.transform.rotation = Quaternion.Euler(180, 0, 90);
             grabKey.transform.position = grabPoint.position;
             grabKey.transform.SetParent(transform);
-            audioManager.PlaySFX(audioManager.grabKeySound);
+          
 
             // Lấy Animator component
             keyAnimator = grabKey.GetComponent<Animator>();

@@ -11,11 +11,11 @@ public class LevelTransition : MonoBehaviour
     private Animator chestAnimator;
     public Animator SceneTransition;
 
-    AudioManager audioManager;
+    
 
     private void Awake()
     {
-        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        
     }
 
     void Start()
@@ -36,7 +36,7 @@ public class LevelTransition : MonoBehaviour
         if (gameObject.layer == chestLayer && collision.gameObject.layer == keyLayer)
         {
             Debug.Log("You Win");
-            audioManager.PlaySFX(audioManager.winSound);
+           
 
             // Bật Animator của chest
             if (chestAnimator != null)

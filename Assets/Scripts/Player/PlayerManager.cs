@@ -31,12 +31,11 @@ public class PlayerManager : MonoBehaviour
     private Vector2 respawnPoint;
 
 
-    AudioManager audioManager;
-
+ 
 
     void Awake()
     {
-        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -142,13 +141,13 @@ public class PlayerManager : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Obstacle"))
         {
-            audioManager.PlayGameOverSound();
+            
             Die();
         }
 
         if (other.gameObject.CompareTag("Bottle"))
         {
-            audioManager.PlaySFX(audioManager.powerUpSound);
+            
             transform.localScale = new Vector3(2.5f, 2.5f, 2.5f);
             groundCheck = 3f;
         }

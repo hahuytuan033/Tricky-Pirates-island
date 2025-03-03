@@ -1,30 +1,32 @@
 using System.Collections;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class LevelManager : MonoBehaviour
 {
-    public Button[] levelButtons;
-
-    private void Awake()
+    int levelsUnlocked;
+    public UnityEngine.UI.Button[] levelButtons;
+    void Start()
     {
-        int unlockedLevel = PlayerPrefs.GetInt("UnlockedLevel", 1);
-        for (int i= 0; i< levelButtons.Length; i++)
+        levelsUnlocked = PlayerPrefs.GetInt("LevelsUnlocked", 1);
+
+        for (int i = 0; i < levelButtons.Length; i++)
         {
             levelButtons[i].interactable = false;
         }
-        for (int i = 0; i < unlockedLevel; i++)
+        for (int i = 0; i < levelsUnlocked; i++)
         {
             levelButtons[i].interactable = true;
         }
     }
 
-    public void OpenLevel(int levelId)
+    public void LoadLevel(int levelIndex)
     {
-        string levelName ="Level " + levelId;
-        SceneManager.LoadScene(levelName);
+        SceneManager.LoadScene(levelIndex);
     }
 }
