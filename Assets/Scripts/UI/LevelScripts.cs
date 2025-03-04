@@ -1,16 +1,16 @@
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class LevelScripts : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void Pass()
     {
-        
-    }
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if(currentSceneIndex>= PlayerPrefs.GetInt("LevelsUnlocked"))
+        {
+            PlayerPrefs.SetInt("LevelsUnlocked", currentSceneIndex + 1);
+        }
     }
 }

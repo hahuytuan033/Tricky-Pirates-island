@@ -11,11 +11,11 @@ public class LevelTransition : MonoBehaviour
     private Animator chestAnimator;
     public Animator SceneTransition;
 
-    
+
 
     private void Awake()
     {
-        
+
     }
 
     void Start()
@@ -36,7 +36,7 @@ public class LevelTransition : MonoBehaviour
         if (gameObject.layer == chestLayer && collision.gameObject.layer == keyLayer)
         {
             Debug.Log("You Win");
-           
+
 
             // Bật Animator của chest
             if (chestAnimator != null)
@@ -62,11 +62,11 @@ public class LevelTransition : MonoBehaviour
 
     void UnlockNewLevel()
     {
-        if (SceneManager.GetActiveScene().buildIndex >= PlayerPrefs.GetInt("ReachedIndex"))
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+
+        if (currentSceneIndex >= PlayerPrefs.GetInt("LevelsUnlocked"))
         {
-            PlayerPrefs.SetInt("ReachedIndex", SceneManager.GetActiveScene().buildIndex + 1);
-            PlayerPrefs.SetInt("UnlockedLevel", PlayerPrefs.GetInt("UnlockedLevel", 1) + 1);
-            PlayerPrefs.Save();
+            PlayerPrefs.SetInt("LevelsUnlocked", currentSceneIndex + 1);
         }
     }
 }

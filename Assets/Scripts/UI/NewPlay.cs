@@ -1,12 +1,8 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-public class StartGameLv1 : MonoBehaviour
-{
-    public void StartGame()
-    {
-        SceneManager.LoadSceneAsync(1);
-    }
 
+public class NewPlay : MonoBehaviour
+{
     public void NewPlayGame()
     {
         PlayerPrefs.SetInt("LevelsUnlocked", 1); // Reset về chỉ mở khóa màn đầu tiên
