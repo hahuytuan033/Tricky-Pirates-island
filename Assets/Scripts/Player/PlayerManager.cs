@@ -30,12 +30,12 @@ public class PlayerManager : MonoBehaviour
     [Header("Player Respawn")]
     private Vector2 respawnPoint;
 
-
+    AudioManager audioManager;
  
 
     void Awake()
     {
-        
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -143,6 +143,7 @@ public class PlayerManager : MonoBehaviour
         {
             
             Die();
+            audioManager.PlaySFX(audioManager.deathMusic);
         }
 
         if (other.gameObject.CompareTag("Bottle"))
