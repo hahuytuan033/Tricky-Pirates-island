@@ -13,6 +13,8 @@ public class AudioManager : MonoBehaviour
     public AudioClip deathMusic;
     public AudioClip winMusic;
     public AudioClip keyPickup;
+    public AudioClip powerUp;
+    public AudioClip powerDown;
 
     private static AudioManager instance;
 

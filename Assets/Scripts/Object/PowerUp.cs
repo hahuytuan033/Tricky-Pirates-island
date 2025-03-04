@@ -10,6 +10,12 @@ public class PowerUp : MonoBehaviour
     private Rigidbody2D _rigidbody2D;
     private Collider2D _collider2D;
     
+    AudioManager audioManager;
+
+    void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
 
     private void Start()
     {
@@ -31,6 +37,7 @@ public class PowerUp : MonoBehaviour
         var player = collision.gameObject.GetComponent<PlayerManager>();
         if (player != null)
         {
+            audioManager.PlaySFX(audioManager.powerDown);
             Destroy(gameObject);
         }
     }
