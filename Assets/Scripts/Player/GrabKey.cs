@@ -9,11 +9,12 @@ public class GrabKey : MonoBehaviour
     private GameObject grabKey;
     private int layerIndex;
     private Animator keyAnimator;
-    
+
+    AudioManager audioManager;
 
     private void Awake()
     {
-        
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -29,13 +30,16 @@ public class GrabKey : MonoBehaviour
     {
         if (grabKey == null && collision.gameObject.layer == layerIndex)
         {
+
             // Nhặt chìa khóa
             grabKey = collision.gameObject;
             grabKey.GetComponent<Rigidbody2D>().isKinematic = true;
             grabKey.transform.rotation = Quaternion.Euler(180, 0, 90);
             grabKey.transform.position = grabPoint.position;
             grabKey.transform.SetParent(transform);
-          
+
+            // Phát âm thanh nhặt chìa khóa
+            audioManager.PlaySFX(audioManager.keyPickup);
 
             // Lấy Animator component
             keyAnimator = grabKey.GetComponent<Animator>();
