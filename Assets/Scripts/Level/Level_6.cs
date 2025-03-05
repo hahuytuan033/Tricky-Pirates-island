@@ -1,67 +1,75 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ObjectMover : MonoBehaviour
 {
-    [Header("Position of Ground in Game")]
-    public Transform startPoint;
-    public Transform endPoint;
-    public Transform startHoriPoint;
-    public Transform endHoriPoint;
-    [Header("Objects in Game")]
-    public GameObject movingObject;
-    public GameObject keyPrefab;
-    public GameObject ground;
-    public GameObject groundHori;
-
-    [Header("Move Settings")]
-    public float moveSpeed = 1.0f;
-    private Vector3 startPosition;
-    private Vector3 endPosition;
-    [SerializeField] private float timeToWait;
+    public GameObject[] objs;      // Mảng các object cần destroy
+    public GameObject hiddenObj;   // Object sẽ hiển thị
+    public Button adsButton;       // Button UI để trigger
 
     void Start()
     {
-        //cái wall dựng lên
-        startPosition = startPoint.position;
-        endPosition = endPoint.position;
-        movingObject.transform.position = startPosition; // Đặt object vào vị trí startPoint
+        // Đảm bảo hiddenObj ẩn khi bắt đầu
+        if (hiddenObj != null)
+        {
+            hiddenObj.SetActive(false);
+        }
+        else
+        {
+            Debug.LogError("HiddenObj is not assigned in the Inspector!");
+        }
 
-        // cái ground bay ngang ra
-        groundHori.transform.position = startHoriPoint.position;
-        StartCoroutine(MoveObject());
+        // Kiểm tra và gắn sự kiện cho button
+        if (adsButton != null)
+        {
+            adsButton.onClick.RemoveAllListeners(); // Xóa các listener cũ nếu có
+            adsButton.onClick.AddListener(HiddenKey);
+            Debug.Log("Button listener added successfully");
+        }
+        else
+        {
+            Debug.LogError("AdsButton is not assigned in the Inspector!");
+        }
+
+        // Kiểm tra mảng objs
+        if (objs == null || objs.Length == 0)
+        {
+            Debug.LogError("Objs array is empty or not assigned in the Inspector!");
+        }
     }
 
-    IEnumerator MoveObject()
+    public void HiddenKey()
     {
-        yield return new WaitForSeconds(timeToWait);
-
-        // Di chuyển object từ startPoint đến endPoint
-        while (Vector3.Distance(movingObject.transform.position, endPosition) > 0.01f)
+        Debug.Log("HiddenKey function called"); // Debug để kiểm tra hàm có chạy không
+        
+        // Destroy tất cả object trong mảng
+        int destroyedCount = 0;
+        foreach (GameObject obj in objs)
         {
-            movingObject.transform.position = Vector3.MoveTowards(movingObject.transform.position, endPosition, moveSpeed * Time.deltaTime);
-            yield return null;
+            if (obj != null)
+            {
+                Destroy(obj);
+                destroyedCount++;
+                Debug.Log($"Destroyed object: {obj.name}");
+            }
         }
+        Debug.Log($"Total objects destroyed: {destroyedCount}");
 
-        // Giữ object tại endPoint trong 2 giây
-        yield return new WaitForSeconds(2.0f);
-
-        // Di chuyển object từ endPoint trở về startPoint
-        while (Vector3.Distance(movingObject.transform.position, startPosition) > 0.01f)
+        // Hiển thị hiddenObj
+        if (hiddenObj != null)
         {
-            movingObject.transform.position = Vector3.MoveTowards(movingObject.transform.position, startPosition, moveSpeed * Time.deltaTime);
-            yield return null;
+            hiddenObj.SetActive(true);
+            Debug.Log("Hidden object activated");
         }
+    }
 
-        // Xuất hiện keyPrefab khi movingObject trở lại startPoint
-        Instantiate(keyPrefab, new Vector3(-2.95f, -2.23f, 0f), Quaternion.identity);
-        ground.SetActive(true);
-
-        // cái này lúc cái GroundHori chạy
-        while (Vector3.Distance(groundHori.transform.position, endHoriPoint.position) > 0.01f)
+    void OnDestroy()
+    {
+        if (adsButton != null)
         {
-            groundHori.transform.position = Vector3.MoveTowards(groundHori.transform.position, endHoriPoint.position, moveSpeed * Time.deltaTime);
-            yield return null;
+            adsButton.onClick.RemoveListener(HiddenKey);
+            Debug.Log("Button listener removed");
         }
     }
 }
