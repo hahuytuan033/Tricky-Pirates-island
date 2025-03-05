@@ -3,10 +3,10 @@ using UnityEngine.UI;
 
 public class Level_3 : MonoBehaviour
 {
-   public Button yesButton;        
-    public Button noButton;         
-    public GameObject panel1;       
-    public GameObject volume;    
+    public Button yesButton;
+    public Button noButton;
+    public GameObject panel1;
+    public GameObject volume;
     public GameObject prefabToShow; // Prefab sẽ hiện lên khi nhấn Yes
 
     private void Start()
@@ -28,10 +28,10 @@ public class Level_3 : MonoBehaviour
     {
         // Ẩn panel 1
         panel1.SetActive(false);
-        
+
         // Hiện panel 2
         volume.SetActive(true);
-        
+
         // Hiện prefab (chỉ khi nhấn Yes)
         if (prefabToShow != null)
         {
@@ -43,7 +43,7 @@ public class Level_3 : MonoBehaviour
     {
         // Ẩn panel 1
         panel1.SetActive(false);
-        
+
         // Hiện panel 2
         volume.SetActive(true);
         // Không hiện prefab khi nhấn No

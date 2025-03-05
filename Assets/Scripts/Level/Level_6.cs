@@ -4,72 +4,49 @@ using UnityEngine.UI;
 
 public class ObjectMover : MonoBehaviour
 {
-    public GameObject[] objs;      // Mảng các object cần destroy
-    public GameObject hiddenObj;   // Object sẽ hiển thị
-    public Button adsButton;       // Button UI để trigger
+    // Mảng chứa các GameObject cha (mỗi cha có thể chứa GO con)
+    public GameObject[] parentObjects;
+    
+    // Button để kích hoạt việc xóa
+    public Button destroyButton;
 
     void Start()
     {
-        // Đảm bảo hiddenObj ẩn khi bắt đầu
-        if (hiddenObj != null)
+        // Gán sự kiện click cho button
+        if (destroyButton != null)
         {
-            hiddenObj.SetActive(false);
+            destroyButton.onClick.AddListener(OnButtonClick);
+            Debug.Log("Button event listener added successfully");
         }
         else
         {
-            Debug.LogError("HiddenObj is not assigned in the Inspector!");
+            Debug.LogError("Destroy Button is not assigned in Inspector!");
         }
 
-        // Kiểm tra và gắn sự kiện cho button
-        if (adsButton != null)
+        // Kiểm tra mảng parentObjects
+        if (parentObjects == null || parentObjects.Length == 0)
         {
-            adsButton.onClick.RemoveAllListeners(); // Xóa các listener cũ nếu có
-            adsButton.onClick.AddListener(HiddenKey);
-            Debug.Log("Button listener added successfully");
-        }
-        else
-        {
-            Debug.LogError("AdsButton is not assigned in the Inspector!");
-        }
-
-        // Kiểm tra mảng objs
-        if (objs == null || objs.Length == 0)
-        {
-            Debug.LogError("Objs array is empty or not assigned in the Inspector!");
+            Debug.LogError("Parent Objects array is empty or not assigned!");
         }
     }
 
-    public void HiddenKey()
+    void OnButtonClick()
     {
-        Debug.Log("HiddenKey function called"); // Debug để kiểm tra hàm có chạy không
-        
-        // Destroy tất cả object trong mảng
-        int destroyedCount = 0;
-        foreach (GameObject obj in objs)
+        Debug.Log("Button clicked!");
+
+        // Duyệt qua từng GameObject cha trong mảng
+        foreach (GameObject parent in parentObjects)
         {
-            if (obj != null)
+            if (parent != null)
             {
-                Destroy(obj);
-                destroyedCount++;
-                Debug.Log($"Destroyed object: {obj.name}");
+                Debug.Log($"Destroying parent object: {parent.name}");
+                // Destroy GameObject cha sẽ tự động destroy tất cả các GO con bên trong
+                Destroy(parent);
             }
-        }
-        Debug.Log($"Total objects destroyed: {destroyedCount}");
-
-        // Hiển thị hiddenObj
-        if (hiddenObj != null)
-        {
-            hiddenObj.SetActive(true);
-            Debug.Log("Hidden object activated");
-        }
-    }
-
-    void OnDestroy()
-    {
-        if (adsButton != null)
-        {
-            adsButton.onClick.RemoveListener(HiddenKey);
-            Debug.Log("Button listener removed");
+            else
+            {
+                Debug.LogWarning("Found a null object in parentObjects array");
+            }
         }
     }
 }
