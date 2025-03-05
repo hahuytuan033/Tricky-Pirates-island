@@ -31,7 +31,7 @@ public class Musicbutton : MonoBehaviour
     public void SetSFXVolume()
     {
         float volume = SFXSlider.value;
-        audioMixer.SetFloat("sfx", Mathf.Log10(volume)*20);
+        audioMixer.SetFloat("SFX", Mathf.Log10(volume)*20);
         PlayerPrefs.SetFloat("sfxVolume", volume);
     }
 
