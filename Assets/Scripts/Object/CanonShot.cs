@@ -19,6 +19,7 @@ public class CanonShot : MonoBehaviour
 
     IEnumerator AutoShoot()
     {
+        // chờ 3s rồi mới bắn đạn
         yield return new WaitForSeconds(3f);
 
         while (bulletsShot < maxBullets)
