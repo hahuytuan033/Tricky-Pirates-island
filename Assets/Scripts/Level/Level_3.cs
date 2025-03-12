@@ -6,7 +6,8 @@ public class Level_3 : MonoBehaviour
     public Button yesButton;
     public Button noButton;
     public GameObject panel1;
-    public GameObject volume;
+    public GameObject volumeButton;
+    public GameObject adsButton;
     public GameObject prefabToShow; // Prefab sẽ hiện lên khi nhấn Yes
 
     private void Start()
@@ -15,13 +16,6 @@ public class Level_3 : MonoBehaviour
         yesButton.onClick.AddListener(OnYesButtonClick);
         noButton.onClick.AddListener(OnNoButtonClick);
 
-        // // Đảm bảo trạng thái ban đầu
-        // panel1.SetActive(true);
-        // panel2.SetActive(false);
-        // if (prefabToShow != null)
-        // {
-        //     prefabToShow.SetActive(false);
-        // }
     }
 
     private void OnYesButtonClick()
@@ -30,7 +24,9 @@ public class Level_3 : MonoBehaviour
         panel1.SetActive(false);
 
         // Hiện panel 2
-        volume.SetActive(true);
+        volumeButton.SetActive(true);
+        adsButton.SetActive(true);
+
 
         // Hiện prefab (chỉ khi nhấn Yes)
         if (prefabToShow != null)
@@ -45,7 +41,8 @@ public class Level_3 : MonoBehaviour
         panel1.SetActive(false);
 
         // Hiện panel 2
-        volume.SetActive(true);
+        volumeButton.SetActive(true);
+        adsButton.SetActive(true);
         // Không hiện prefab khi nhấn No
     }
 }

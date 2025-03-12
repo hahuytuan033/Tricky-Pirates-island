@@ -139,6 +139,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8425298453270660702}
   - component: {fileID: 811486632255690091}
+  - component: {fileID: 9099586731184297487}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Audio
@@ -183,6 +184,18 @@ MonoBehaviour:
   keyPickup: {fileID: 8300000, guid: a6161f7485e73c041b3d2d204f934410, type: 3}
   powerUp: {fileID: 8300000, guid: 0aa1c12f80fc7854f9187f02a63fd195, type: 3}
   powerDown: {fileID: 8300000, guid: 5861997463593c7438391c0f80acbd8d, type: 3}
+--- !u!114 &9099586731184297487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6318742694384249997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee3e316ee80f3be449083d3a556de7dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8541994856040157673
 GameObject:
   m_ObjectHideFlags: 0
