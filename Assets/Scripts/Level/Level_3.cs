@@ -8,6 +8,7 @@ public class Level_3 : MonoBehaviour
     public GameObject panel1;
     public GameObject volumeButton;
     public GameObject adsButton;
+    public GameObject diamondPanel;
     public GameObject prefabToShow; // Prefab sẽ hiện lên khi nhấn Yes
 
     private void Start()
@@ -26,6 +27,7 @@ public class Level_3 : MonoBehaviour
         // Hiện panel 2
         volumeButton.SetActive(true);
         adsButton.SetActive(true);
+        diamondPanel.SetActive(true);
 
 
         // Hiện prefab (chỉ khi nhấn Yes)
@@ -43,6 +45,7 @@ public class Level_3 : MonoBehaviour
         // Hiện panel 2
         volumeButton.SetActive(true);
         adsButton.SetActive(true);
+        diamondPanel.SetActive(true);
         // Không hiện prefab khi nhấn No
     }
 }
