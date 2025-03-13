@@ -38,6 +38,8 @@ MonoBehaviour:
     m_path: Assets/Scenes/Level 7.unity
   - m_enabled: 1
     m_path: Assets/Scenes/Level 8.unity
+  - m_enabled: 1
+    m_path: Assets/Scenes/Level 9.unity
   m_ScriptingDefines: []
   m_PlayerSettingsYaml:
     m_Settings: []
