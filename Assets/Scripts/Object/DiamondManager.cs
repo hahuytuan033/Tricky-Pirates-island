@@ -51,4 +51,9 @@ public class DiamondManager : MonoBehaviour
     {
         return PlayerPrefs.GetInt(TOTAL_DIAMONDS_KEY, 0);
     }
+    // Lấy số coin hiện tại trong level
+    public int GetCurrentLevelDiamond()
+    {
+        return currentLevelDiamonds;
+    }
 }

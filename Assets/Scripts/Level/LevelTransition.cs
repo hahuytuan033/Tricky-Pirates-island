@@ -45,7 +45,9 @@ public class LevelTransition : MonoBehaviour
                 chestAnimator.enabled = true;
             }
             UnlockNewLevel();
-
+            // Hiển thị số diamond nhặt được trong level hiện tại
+            int currentDiamonds = DiamondManager.Instance.GetCurrentLevelDiamond();
+            Debug.Log($"Diamonds collected in this level: {currentDiamonds}");
             //lưu coin của level hiện tại trước khi chuyển 
             DiamondManager.Instance.SaveLevelDiamonds(SceneManager.GetActiveScene().buildIndex);
 
