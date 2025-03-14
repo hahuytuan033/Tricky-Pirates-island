@@ -6,7 +6,7 @@ public class Diamond : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            DiamondManager.Instance.AddDiamond(1);
+            DiamondManager.Instance.AddDiamond(5);
             Destroy(gameObject);
         }
     }
