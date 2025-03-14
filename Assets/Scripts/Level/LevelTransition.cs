@@ -45,6 +45,10 @@ public class LevelTransition : MonoBehaviour
                 chestAnimator.enabled = true;
             }
             UnlockNewLevel();
+
+            //lưu coin của level hiện tại trước khi chuyển 
+            DiamondManager.Instance.SaveLevelDiamonds(SceneManager.GetActiveScene().buildIndex);
+
             // Bắt đầu coroutine để chuyển sang scene tiếp theo
             StartCoroutine(LoadNextLevel(1f));
         }
@@ -69,5 +73,11 @@ public class LevelTransition : MonoBehaviour
         {
             PlayerPrefs.SetInt("LevelsUnlocked", currentSceneIndex + 1);
         }
+    }
+
+    public void ResetLevel()
+    {
+        DiamondManager.Instance.ResetCurrentLevelDiamond();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
