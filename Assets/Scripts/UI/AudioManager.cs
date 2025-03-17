@@ -15,6 +15,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip keyPickup;
     public AudioClip powerUp;
     public AudioClip powerDown;
+    public AudioClip blueDiamond;
 
     private static AudioManager instance;
 

@@ -31,7 +31,11 @@ public class PlayerManager : MonoBehaviour
     private Vector2 respawnPoint;
 
     AudioManager audioManager;
- 
+
+    [Header("Skin Selection")]
+    public GameObject[] playerPrefab;
+    int skinIndex;
+
 
     void Awake()
     {
@@ -141,14 +145,14 @@ public class PlayerManager : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Obstacle"))
         {
-            
+
             Die();
             audioManager.PlaySFX(audioManager.deathMusic);
         }
 
         if (other.gameObject.CompareTag("Bottle"))
         {
-            
+
             transform.localScale = new Vector3(2.5f, 2.5f, 2.5f);
             groundCheck = 3f;
         }
